@@ -1,123 +1,119 @@
-325 CA - DINU ION-IRINEL
-TEMA 1
+Linux File System Implementaion
 ------------------------
-IOCLA - Sistemul lui Biju
+
+Implementation:
+
+To solve the topic we simulated a series of specific operations
+a simple concatenated list to implement the file system
+linux. Also, for a good modularization of the code I divided
+functions in multiple header files.
 
 
-Implementare:
-
-Pentru rezolvarea temei am simulat o serie de operatii specifice
-unei liste simple inlantuite pentru a implementat sistemul de fisiere
-linux. De asemenea, pentru o modularizare buna a codului am impartit
-functiile in mai multe fisiere header.
+main-> In this function I have allocated memory for
+input, I created the root and the current directory and called
+command parsing function.
 
 
-main-> In cadrul acestei functii am alocat memorie pentru
-input, am creat root-ul si directorul curent si am apelat
-functia de parsare pentru comenzi.
+FUNCTIONS.C:
 
+create_root-> In this function I have allocated memory
+for the structure, I assigned and created the name and redirected
+pointers to NULL.
 
-FUNCTIONS.C :
+check_exist_directory-> In this function I went through the list
+directories and we checked to see if there was a directory named
+desired. If so, I returned true.
 
-create_root-> In cadrul acestei functii am alocat memorie 
-pentru structura, am alocat si creat numele si am redirectat
-pointerii catre NULL.
+check_exist_file-> Similarly I went through the list of files
+and I checked to see if there was already a file with the same name.
 
-check_exist_directory-> In aceasta functie am parcurs lista
-de directoare si am verificat daca exista un director cu numele
-dorit. In caz afirmativ am returnat true.
+check_exist-> In this function I used the functions
+implemented above to check if there is a directory
+or a file with the desired name in the current directory.
 
-check_exist_file-> In mod similar am parcurs lista de fisiere
-si am verificat daca exista deja un fisier cu acelasi nume.
+touch-> In this function, we checked if it already exists
+a file with the same name. If not, I allocated and created the structure
+a file. Then I handled the case where the list of files is
+empty, and if I did not go through the list to the end, and I added
+the new file in the last position.
 
-check_exist-> In cadrul acestei functii am folosit functiile 
-implementate mai sus pentru a verifica daca exista ori un director
-ori un fisier cu numele dorit in directorul curent.
+mkdir-> I did similar to the touch function, only the reasoning
+was applied to the directory list.
 
-touch-> In cadrul acestei functii, am verificat daca exista deja 
-un fisier cu acelasi nume. Daca nu, am alocat si am creat structura
-unui fisier. Apoi am tratat cazul in care lista de fisierele este 
-goala, iar daca nu am parcurs lista pana la final, si am adaugat
-noul fisier pe ultima pozitie.
+ls-> In this function, I went through the list of subdirectories
+and I displayed each directory and then went through the list
+files and I also displayed each file.
 
-mkdir-> Am procedat similar functiei touch, doar ca rationamentul
-a fost aplicat pe lista de directoare.
+rm-> In this function I checked if it already exists
+a file with the same name in the current directory. Then I checked
+if the file to be deleted is the head of the list, in which case I have
+I deleted the file and I updated the head. In case of contract I went through
+list and I searched for the desired item. If I found it I realized
+the link between the previous and the next file, then I deleted
+the current file, freeing up the allocated memory.
 
-ls-> In cadrul acestei functii, am parcurs lista de subdirectoare
-si am afisat fiecare director iar apoi am parcurs lista de 
-fisiere si am afisat de asemenea fiecare fisier.
+__rmdir-> In this function I went through each deputy director
+from the current directory, and I called the recursive function for
+each of them to delete the contents, then I deleted
+the deputy director. In the end, I deleted every file that was there
+in the current directory.
 
-rm-> In cadrul acestei functii am verificat daca exista deja 
-un fisier cu acelasi nume in directorul curent. Apoi am verificat
-daca fisierul ce trebuie sters este head-ul listei, caz in care am  
-sters fisierul si am actualizat head-ul.In caz contrat am parcurs
-lista si am cautat elementul dorit.Daca l-am gasit am realizat
-legatura dintre fisierul precedent si cel urmator, apoi am sters
-fisierul curent, eliberand si memoria alocata.
+rmdir-> First we checked to see if there was a directory named
+which we want to delete. If the directory is the head of the list,
+I updated the head, I recursively deleted the content and then I deleted
+and the director. Otherwise I went through the list of deputy directors and I
+searched for the directory with the desired name. Similarly, I deleted the content and
+then the director himself.
 
-__rmdir-> In cadrul acestei functii am parcurs fiecare subdirector
-din directorul curent, si am apelat functia recursiva pentru 
-fiecare dintre acestia pentru a sterge continutul, apoi am sters 
-subdirectorul. In final am sters si fiecare fisier care se afla 
-in directorul curent.
+cd-> In this function we checked if the argument was transmitted
+as parameter is "..", in which case I changed the current directory
+with his father. Otherwise, I went through the list of deputy directors, I have
+found the directory with the desired name and changed the current directory
+with the director found.
 
-rmdir-> Pentru inceput am verificat daca exista un director cu numele
-pe care dorim sa il stergem. Daca directorul este head-ul listei, 
-am actualizat head-ul, am sters recursiv continutul si apoi am sters
-si directorul. In caz contrar am parcurs lista de subdirectoare si am
-cautat directorul cu numele dorit. Similar, am sters continutul si 
-apoi directorul in sine.
+pwd-> I used two strings to perform this function
+in which I kept the name of the director. Starting from the end, I have
+I went through the parent directories until I got to the root. Each
+date, we reallocate the memory for the strings, we add in the auxiliary the string from the path,
+then we add the name of the current directory, and at the end we add in the path what
+which has just been added to the auxiliary string. When I got to the directory
+root, I reallocated the memory, I added its name to the path, and I
+released the memory allocated for the auxiliary string used.
 
-cd-> In cadrul acestei functii am verificat daca argumentul transmis
-ca parametru este "..", caz in care am schimbat directorul curent
-cu parintele acestuia. Altfel, am parcurs lista de subdirectoare, am
-gasit directorul cu numele dorit si am schimbat directorul curent
-cu directorul gasit.
+stop-> In this function I went through the whole file list,
+and I deleted each file, then similarly I deleted each
+director. Finally I deleted the root directory.
 
-pwd-> Pentru realizarea acestei functii am folosit doua string-uri
-in care am pastrat numele directorului. Plecand de la final, am
-parcurs directoarele parinte, cat timp nu am ajuns la root. De fiecare
-data, realocam memoria pentru stringuri, adaugam in auxiliar string-ul din path,
-apoi adaugam numele directorului curent, si la final adaugam in path ceea
-ce tocmai s-a adaugat in string-ul auxiliar. Cand am ajuns in directorul 
-root, am realocat memoria, am adaugat si numele acestuia la path, si am 
-eliberat memoria alocata pentru string-ul auxiliar folosit.
+tree-> We performed a recursive implementation of the function. I went through
+the list of deputy directors and for each of them, I called
+function recursively based on a level, to display its contents.
+At the end I also displayed each file contained.
 
-stop-> In cadrul acestei functii am parcurs toata lista de fisier,
-si am sters fiecare fisier, apoi in mod similar am sters fiecare 
-director. In final am sters si directorul root.
+mv_file-> For starters, if there is only one file in the directory
+current, I updated its name and turned off the function. Similarly
+functions above, we have treated the case that needs to be modified
+header file name, I updated the header and added the file
+at the end of the lists. If not, I went through the file list, I updated
+the position of the desired file, I changed its name and
+I added it at the end.
 
-tree-> Am realizat o implementare recursiva a functiei. Am parcurs
-lista de subdirectoare si pentru fiecare dintre acestia, am apelat 
-functia in mod recursiv pe baza unui level, pentru a-i afisa continutul.
-La final am afisat si fiecare fisier continut.
+mv_directory-> I did similarly to the mv_file function, only that
+the reasoning was applied to the directors.
 
-mv_file-> Pentru inceput, daca exista un singur fisier in directorul 
-curent, i-am actualizat numele si am oprit functia. In mod similar 
-functiilor de mai sus, am tratat cazul in care trebuie modificat
-numele fisirului din head, am actualizat head-ul si am adaugat fisierul
-la finalul liste. Daca nu, am parcurs lista de fisier, am actualizat
-pozitia pe care se afla fisierul dorit, i-am schimbat numele si 
-l-am adaugat la final.
+mv-> In this function, we checked if the file / directory exists
+whose name we want to change or if there is already a directory
+with the new desired name. Then depending on the existence of a file or directory,
+I called the implemented functions: mv_file or mv_directory.
 
-mv_directory-> Am procedat in mod similar functiei de mv_file, doar ca
-rationamentul a fost aplicat pentru directoare.
+COMMANDS.C:
 
-mv-> In cadrul acestei functii, am verificat daca exista fisierul/directorul
-al carui nume dorim sa il modificam sau daca exista deja un director
-cu noul nume dorit. Apoi in functie de existenta unui fisier sau director,
-am apelat functii implementate: mv_file sau mv_directory.
+split_commands-> In this I split the command string
+transmitted as a parameter to get the necessary arguments
+touch, mkdir, mv etc. functions.
 
+parsing_commands-> In this function I read the input
+from the keyboard, I determined the command and the necessary arguments and
+I called the appropriate functions.
 
-COMMANDS.C :
-
-split_commands-> In cadrul acestei am impartit string-ul command
-transmis ca parametru pentru a obtine argumentele necesare 
-functiilor touch, mkdir, mv etc. 
-
-parsing_commands-> In cadrul acestei functii am citit inputul 
-de la tastatura, am determinat comanda si argumentele necesare si
-am apelat functiile corespunzatoare.
-
-Pentru erorile legate de alocarea memoriei am folosit macro-ul
-DIE preluat din headerul utils.h
+I used the macro for memory allocation errors
+DIE taken from the header utils.h
