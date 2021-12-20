@@ -115,5 +115,5 @@ parsing_commands-> In this function I read the input
 from the keyboard, I determined the command and the necessary arguments and
 I called the appropriate functions.
 
-I used the macro for memory allocation errors
-DIE taken from the header utils.h
+I used the DIE  macro for memory allocation errors
+taken from the header utils.h
