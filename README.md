@@ -14,10 +14,12 @@ https://github.com/dinuionica/Linux-FileSystem.git
 ```
 For test you can use make command using linux :<br />
 ```
-make 
+make && ./filesystem
+```
+For test using checker you can use this command :<br />
+```
 python3 checker.py
 ```
-
 Example file test:
 ```
 mkdir d1
@@ -35,7 +37,7 @@ stop
 ```
 ## Functions.c:
 
-### create_root-> In this function I have allocated memory
+create_root-> In this function I have allocated memory
 for the structure, I assigned and created the name and redirected
 pointers to NULL.
 
