@@ -1,10 +1,10 @@
-# Linux File System Implementaion
+# Linux File System 
 ------------------------
 
 ## Implementation:
 
 To solve the topic we simulated a series of specific operations
-a simple concatenated list to implement the file system
+a simple linked list to implement the file system
 linux. Also, for a good modularization of the code the functions
 are divided in multiple header files.
 
