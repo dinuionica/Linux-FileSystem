@@ -10,7 +10,7 @@ are divided in multiple header files.
 
 For download this project:
 ```
-https://github.com/dinuionica/Load-Balancer.git
+https://github.com/dinuionica/Linux-FileSystem.git
 ```
 For test you can use make command using linux :<br />
 ```
@@ -31,7 +31,7 @@ retrieve "c674390f9"
 retrieve "2fe5f9f583"
 remove_server 2
 retrieve "2fe5f9f583"
-
+```
 ## Functions.c:
 
 create_root-> In this function I have allocated memory
