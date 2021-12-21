@@ -1,12 +1,12 @@
-## Linux File System Implementaion
+# Linux File System Implementaion
 ------------------------
 
-# Implementation:
+## Implementation:
 
 To solve the topic we simulated a series of specific operations
 a simple concatenated list to implement the file system
-linux. Also, for a good modularization of the code I divided
-functions in multiple header files.
+linux. Also, for a good modularization of the code the functions
+are divided in multiple header files.
 
 
 main-> In this function I have allocated memory for
@@ -14,7 +14,7 @@ input, I created the root and the current directory and called
 command parsing function.
 
 
-# FUNCTIONS.C:
+## FUNCTIONS.C:
 
 create_root-> In this function I have allocated memory
 for the structure, I assigned and created the name and redirected
@@ -105,7 +105,7 @@ whose name we want to change or if there is already a directory
 with the new desired name. Then depending on the existence of a file or directory,
 I called the implemented functions: mv_file or mv_directory.
 
-# COMMANDS.C:
+## COMMANDS.C:
 
 split_commands-> In this I split the command string
 transmitted as a parameter to get the necessary arguments
