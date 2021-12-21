@@ -8,11 +8,29 @@ a simple linked list to implement the file system
 linux. Also, for a good modularization of the code the functions
 are divided in multiple header files.
 
+For download this project:
+```
+https://github.com/dinuionica/Load-Balancer.git
+```
+For test you can use make command using linux :<br />
+```
+make 
+python3 checker.py
+```
 
-main-> In this function I have allocated memory for
-input, I created the root and the current directory and called
-command parsing function.
-
+Example file test:
+```
+add_server 0
+add_server 1
+add_server 2
+store "c674390f9" "Keyboard"
+store "a3529213e15" "Headphones"
+store "5a51719f5ec" "Router"
+store "2fe5f9f583" "Laptop"
+retrieve "c674390f9"
+retrieve "2fe5f9f583"
+remove_server 2
+retrieve "2fe5f9f583"
 
 ## Functions.c:
 
