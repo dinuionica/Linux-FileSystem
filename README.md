@@ -37,11 +37,13 @@ stop
 ```
 ## Functions.c:
 
-create_root-> In this function I have allocated memory
+### create_root
+In this function I have allocated memory
 for the structure, I assigned and created the name and redirected
 pointers to NULL.
 
-check_exist_directory-> In this function I went through the list
+### check_exist_directory
+In this function I went through the list
 directories and we checked to see if there was a directory named
 desired. If so, I returned true.
 
