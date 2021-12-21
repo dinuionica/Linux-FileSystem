@@ -20,17 +20,18 @@ python3 checker.py
 
 Example file test:
 ```
-add_server 0
-add_server 1
-add_server 2
-store "c674390f9" "Keyboard"
-store "a3529213e15" "Headphones"
-store "5a51719f5ec" "Router"
-store "2fe5f9f583" "Laptop"
-retrieve "c674390f9"
-retrieve "2fe5f9f583"
-remove_server 2
-retrieve "2fe5f9f583"
+mkdir d1
+cd d1
+mkdir d2
+cd d2
+mkdir d3
+cd d3
+mkdir d4
+cd d4
+mkdir d5
+cd d5
+pwd
+stop
 ```
 ## Functions.c:
 
