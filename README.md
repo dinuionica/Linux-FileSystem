@@ -3,7 +3,7 @@
 
 ## Implementation:
 
-To solve the topic we simulated a series of specific operations
+To solve the topic we simulated a series of specific operations of
 a simple linked list to implement the file system
 linux. Also, for a good modularization of the code the functions
 are divided in multiple header files.
@@ -35,7 +35,7 @@ stop
 ```
 ## Functions.c:
 
-create_root-> In this function I have allocated memory
+### create_root-> In this function I have allocated memory
 for the structure, I assigned and created the name and redirected
 pointers to NULL.
 
